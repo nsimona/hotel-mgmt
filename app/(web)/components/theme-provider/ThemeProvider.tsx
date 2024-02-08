@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-import ThemeContext from "@/app/context/ThemeContext";
+import ThemeContext from "@/app/(web)/context/ThemeContext";
 
 const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   const themeFromStorage: boolean =
