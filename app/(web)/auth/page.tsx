@@ -3,9 +3,9 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { AiFillGithub } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
-// import { signUp } from "next-auth-sanity/client";
-// import { signIn, useSession } from "next-auth/react";
-// import toast from "react-hot-toast";
+import { signUp } from "next-auth-sanity/client";
+import { signIn, useSession } from "next-auth/react";
+import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 
 const defaultFormData = {
@@ -25,37 +25,37 @@ const Auth = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  // const { data: session } = useSession();
+  const { data: session } = useSession();
   const router = useRouter();
 
-  // useEffect(() => {
-  //   if (session) router.push("/");
-  // }, [router, session]);
+  useEffect(() => {
+    if (session) router.push("/");
+  }, [router, session]);
 
   const loginHandler = async () => {
-    // try {
-    //   await signIn();
-    //   router.push("/");
-    // } catch (error) {
-    //   console.log(error);
-    //   toast.error("Something wen't wrong");
-    // }
+    try {
+      await signIn();
+      router.push("/");
+    } catch (error) {
+      console.log(error);
+      toast.error("Something went wrong");
+    }
   };
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    // try {
-    //   const user = await signUp(formData);
-    //   if (user) {
-    //     toast.success("Success. Please sign in");
-    //   }
-    // } catch (error) {
-    //   console.log(error);
-    //   toast.error("Something wen't wrong");
-    // } finally {
-    //   setFormData(defaultFormData);
-    // }
+    try {
+      const user = await signUp(formData);
+      if (user) {
+        toast.success("Success. Please sign in");
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("Something went wrong");
+    } finally {
+      setFormData(defaultFormData);
+    }
   };
 
   return (
