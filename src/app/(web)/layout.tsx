@@ -4,8 +4,8 @@ import "./globals.css";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
 import ThemeProvider from "../../components/theme-provider/ThemeProvider";
-import { NextAuthProvider } from "@/components/authProvider/AuthProvider";
-import Toast from "@/components/toast/toast";
+import { NextAuthProvider } from "@/src/components/authProvider/AuthProvider";
+import Toast from "@/src/components/toast/toast";
 
 const inter = Inter({
   subsets: ["latin"],

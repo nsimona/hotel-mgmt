@@ -1,5 +1,5 @@
 "use client";
-import ThemeContext from "@/app/(web)/context/ThemeContext";
+import ThemeContext from "@/src/context/ThemeContext";
 import Link from "next/link";
 import { useContext } from "react";
 import { FaUserCircle } from "react-icons/fa";

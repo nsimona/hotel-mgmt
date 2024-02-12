@@ -22,6 +22,11 @@ const user = {
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: "emailVerified",
+      type: "datetime",
+      hidden: true,
+    }),
+    defineField({
       name: "email",
       title: "Email",
       type: "string",

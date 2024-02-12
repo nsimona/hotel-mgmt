@@ -1,7 +1,6 @@
 "use client";
 
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
-import { AiFillGithub } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 import { signUp } from "next-auth-sanity/client";
 import { signIn, useSession } from "next-auth/react";
@@ -67,11 +66,6 @@ const Auth = () => {
           </h1>
           <p>OR</p>
           <span className="inline-flex items-center">
-            <AiFillGithub
-              onClick={loginHandler}
-              className="mr-3 text-4xl cursor-pointer text-black dark:text-white"
-            />{" "}
-            |
             <FcGoogle
               onClick={loginHandler}
               className="ml-3 text-4xl cursor-pointer"
