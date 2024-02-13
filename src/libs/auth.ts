@@ -2,6 +2,7 @@ import { NextAuthOptions } from "next-auth";
 import { SanityAdapter, SanityCredentials } from "next-auth-sanity";
 import GoogleProvider from "next-auth/providers/google";
 import sanityCLient from "./sanity";
+import { SanityClient } from "sanity";
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -17,4 +18,21 @@ export const authOptions: NextAuthOptions = {
   adapter: SanityAdapter(sanityCLient),
   debug: process.env.NODE_ENV === "development",
   secret: process.env.NEXT_AUTH_SECRET,
+  callbacks: {
+    session: async ({ session, token }) => {
+      const userEmail = token.email;
+      const userIdObj = await sanityCLient.fetch<{ _id: string }>(
+        `*[_type == "user" && email == $email] [0] {
+          _id
+        }`
+      );
+      return {
+        ...session,
+        user: {
+          ...session.user,
+          id: userIdObj._id,
+        },
+      };
+    },
+  },
 };
