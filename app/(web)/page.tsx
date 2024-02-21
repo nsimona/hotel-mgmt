@@ -1,8 +1,8 @@
 import FeaturedRoom from "@/components/FeaturedRoom/FeaturedRoom";
 import Gallery from "@/components/Gallery/Gallery";
-import Newsletter from "@/components/Newsletter/NewsLetter";
+import Newsletter from "@/components/Newsletter/Newsletter";
 import PageSearch from "@/components/PageSearch/PageSearch";
-import Hero from "@/components/hero/hero";
+import Hero from "@/components/Hero/hero";
 
 export default function Home() {
   return (

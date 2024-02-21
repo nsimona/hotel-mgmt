@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Header from "../../components/header/Header";
-import Footer from "../../components/footer/Footer";
+import Header from "../../components/Header/Header";
+import Footer from "../../components/Footer/Footer";
 import ThemeProvider from "../../components/theme-provider/ThemeProvider";
-import { NextAuthProvider } from "@/components/authProvider/AuthProvider";
-import Toast from "@/components/toast/toast";
+import { NextAuthProvider } from "@/components/AuthProvider/AuthProvider";
+import Toast from "@/components/Toast/toast";
 
 const inter = Inter({
   subsets: ["latin"],
