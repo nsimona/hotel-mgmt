@@ -1,11 +1,13 @@
+import { Room } from "@/app/models/room";
 import sanityCLient from "./sanity";
 import * as queries from "./sanityQueries";
 
 export async function getFeaturedRoom() {
-  const result = await sanityCLient.fetch(
+  const result = await sanityCLient.fetch<Room>(
     queries.getFeaturedRoomQuery,
-    {}
-    // { next: { revalidate: 1800 } } // every 30 secs
+    {},
+    { cache: "no-cache" }
+    // { next: { revalidate: 1800 } } // every 30 mins
   );
 
   return result;
