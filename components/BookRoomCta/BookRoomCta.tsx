@@ -49,7 +49,7 @@ const BookRoomCta: FC<Props> = (props) => {
   };
 
   return (
-    <div className="px-7 py-6">
+    <div className="px-7 py-6 min-h-screen	">
       <h3>
         <span
           className={`${discount ? "text-gray-400" : ""} font-bold text-xl`}
@@ -81,7 +81,9 @@ const BookRoomCta: FC<Props> = (props) => {
           </label>
           <DatePicker
             selected={checkinDate}
-            onChange={(date) => setCheckinDate(date)}
+            onChange={(date: SetStateAction<Date | null>) =>
+              setCheckinDate(date)
+            }
             dateFormat="dd/MM/yyyy"
             minDate={new Date()}
             id="check-in-date"
@@ -97,7 +99,9 @@ const BookRoomCta: FC<Props> = (props) => {
           </label>
           <DatePicker
             selected={checkoutDate}
-            onChange={(date) => setCheckoutDate(date)}
+            onChange={(date: SetStateAction<Date | null>) =>
+              setCheckoutDate(date)
+            }
             dateFormat="dd/MM/yyyy"
             disabled={!checkinDate}
             minDate={calcMinCheckoutDate()}
