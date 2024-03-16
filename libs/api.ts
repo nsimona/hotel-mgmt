@@ -1,9 +1,9 @@
 import { Room } from "@/app/models/room";
-import sanityCLient from "./sanity";
+import sanityClient from "./sanity";
 import * as queries from "./sanityQueries";
 
 export async function getFeaturedRoom() {
-  const result = await sanityCLient.fetch<Room>(
+  const result = await sanityClient.fetch<Room>(
     queries.getFeaturedRoomQuery,
     {},
     { cache: "no-cache" }
@@ -14,6 +14,16 @@ export async function getFeaturedRoom() {
 }
 
 export async function getRooms() {
-  const result = await sanityCLient.fetch(queries.getRoomsQuery);
+  const result = await sanityClient.fetch(queries.getRoomsQuery);
+  return result;
+}
+
+export async function getRoom(slug: string) {
+  const result = await sanityClient.fetch<Room>(
+    queries.getRoom,
+    { slug },
+    { cache: "no-cache" }
+  );
+
   return result;
 }
